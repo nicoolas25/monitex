@@ -18,18 +18,6 @@ defmodule Twitter do
     :oauth.uri(@authorize_url, [{'oauth_token', request_token}])
   end
 
-  def access_token(consumer, request_tokens) do
-    access_token(consumer, request_tokens, [])
-  end
-
-  def access_token(consumer, _request_tokens = {request_token, request_token_secret}, params) do
-    {:ok, response} = :oauth.get(@access_token_url, params, consumer, request_token, request_token_secret)
-    access_token_params = :oauth.params_decode(response)
-    access_token = :oauth.token(access_token_params)
-    access_token_secret = :oauth.token_secret(access_token_params)
-    {access_token, access_token_secret}
-  end
-
   def client_access_token(consumer, request_tokens, verifier) do
     params = [{'oauth_verifier', verifier}]
     access_token(consumer, request_tokens, params)
@@ -42,5 +30,13 @@ defmodule Twitter do
     {{'HTTP/1.1', 200, 'OK'}, _headers, body} = response
     {:ok, decoded_body} = JSEX.decode(body)
     decoded_body
+  end
+
+  defp access_token(consumer, _request_tokens = {request_token, request_token_secret}, params \\ []) do
+    {:ok, response} = :oauth.get(@access_token_url, params, consumer, request_token, request_token_secret)
+    access_token_params = :oauth.params_decode(response)
+    access_token = :oauth.token(access_token_params)
+    access_token_secret = :oauth.token_secret(access_token_params)
+    {access_token, access_token_secret}
   end
 end
