@@ -1,0 +1,10 @@
+%{"apex": {:hex, :apex, "0.3.1"},
+  "exactor": {:hex, :exactor, "0.7.0"},
+  "exvcr": {:git, "git://github.com/nicoolas25/exvcr.git", "4309d814882f50c62e766de263da5cd5fa637115", []},
+  "hackney": {:hex, :hackney, "0.14.1"},
+  "httpoison": {:hex, :httpoison, "0.5.0"},
+  "idna": {:hex, :idna, "1.0.1"},
+  "jsex": {:hex, :jsex, "2.0.0"},
+  "jsx": {:hex, :jsx, "2.1.1"},
+  "meck": {:hex, :meck, "0.8.2"},
+  "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "2ee206ea921722893200a0ad534c6b6130233325", [tag: "v1.5.0"]}}
