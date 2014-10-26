@@ -1,6 +1,6 @@
 %{"apex": {:hex, :apex, "0.3.1"},
   "exactor": {:hex, :exactor, "0.7.0"},
-  "exvcr": {:git, "git://github.com/nicoolas25/exvcr.git", "4309d814882f50c62e766de263da5cd5fa637115", []},
+  "exvcr": {:git, "git://github.com/nicoolas25/exvcr.git", "12e44f9527ee9fb84dbc29156dfa0c11d738bb16", []},
   "hackney": {:hex, :hackney, "0.14.1"},
   "httpoison": {:hex, :httpoison, "0.5.0"},
   "idna": {:hex, :idna, "1.0.1"},

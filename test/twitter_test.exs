@@ -5,8 +5,6 @@ defmodule TwitterTest do
   setup_all do
     :inets.start
     ExVCR.Config.cassette_library_dir("test/fixture/cassettes")
-    ExVCR.Config.format(:raw)
-    :ok
   end
 
   test "#request_token/2 returns consumer's tokens from key & secret" do
