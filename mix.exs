@@ -9,7 +9,10 @@ defmodule Monitex.Mixfile do
   end
 
   def application do
-    [applications: [:logger]]
+    [
+      applications: [:logger],
+      mod: {Monitex, []},
+    ]
   end
 
   #
