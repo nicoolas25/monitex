@@ -1,3 +1,8 @@
+#
+# Main supervisor for the application.
+#
+# It starts one AccountsManager.
+#
 defmodule Monitex.Supervisor do
   use Supervisor
 
@@ -8,8 +13,9 @@ defmodule Monitex.Supervisor do
   # Callbacks
 
   def init(:ok) do
-    IO.puts "Launching..."
-    children = [ ]
+    children = [
+      worker(Monitex.AccountsManager, [])
+    ]
     supervise(children, strategy: :one_for_one)
   end
 end
