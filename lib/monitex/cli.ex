@@ -43,7 +43,7 @@ defmodule Monitex.CLI do
     {:ok, pid} = Monitex.start(:normal, delays)
     ref = Process.monitor(pid)
     receive do
-      msg = {'DOWN', ^ref, type, object, info} ->
+      msg = {:'DOWN', ^ref, type, object, info} ->
         :io.format('~p\n', [msg])
         System.halt(1)
     end
