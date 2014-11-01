@@ -6,15 +6,15 @@
 defmodule Monitex.Supervisor do
   use Supervisor
 
-  def start_link do
-    Supervisor.start_link(__MODULE__, :ok)
+  def start_link(delays) do
+    Supervisor.start_link(__MODULE__, delays)
   end
 
   # Callbacks
 
-  def init(:ok) do
+  def init(delays) do
     children = [
-      worker(Monitex.AccountsManager, [])
+      worker(Monitex.AccountsManager, [delays])
     ]
     supervise(children, strategy: :one_for_one)
   end

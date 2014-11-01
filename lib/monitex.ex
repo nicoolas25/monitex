@@ -1,7 +1,7 @@
 defmodule Monitex do
   use Application
 
-  def start(_type, _args) do
-    Monitex.Supervisor.start_link
+  def start(_type, delays) do
+    Monitex.Supervisor.start_link(delays)
   end
 end

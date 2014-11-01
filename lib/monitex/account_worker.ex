@@ -1,8 +1,7 @@
 defmodule Monitex.AccountWorker do
   use GenServer
 
-  def start_link do
-    delay = 3_000 # 3s
+  def start_link(delay) do
     {:ok, pid} = GenServer.start_link(__MODULE__, delay)
     Process.send_after(pid, :refresh, delay)
 
@@ -22,7 +21,7 @@ defmodule Monitex.AccountWorker do
     IO.puts "AccountWorker #{:erlang.pid_to_list(self)} is triggered!"
 
     delay = state[:delay]
-    Process.send_after(self(), :refresh, delay)
+    Process.send_after(self, :refresh, delay)
     {:noreply, state}
   end
 

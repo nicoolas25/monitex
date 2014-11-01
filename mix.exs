@@ -2,16 +2,27 @@ defmodule Monitex.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :monitex,
-     version: "0.0.1",
-     elixir: "~> 1.0.0",
-     deps: deps(Mix.env)]
+    [
+      app: :monitex,
+      version: "0.0.1",
+      elixir: "~> 1.0.0",
+      deps: deps(Mix.env),
+      escript: escript,
+   ]
   end
 
   def application do
+    delays = Monitex.CLI.default_delays
     [
       applications: [:logger],
-      mod: {Monitex, []},
+      mod: {Monitex, delays},
+    ]
+  end
+
+  def escript do
+    [
+      main_module: Monitex.CLI,
+      app: nil,
     ]
   end
 

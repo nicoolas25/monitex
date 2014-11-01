@@ -6,17 +6,16 @@
 defmodule Monitex.AccountsManager do
   use Supervisor
 
-  def start_link do
-    update_delay = 5_000 # 5s
-    Supervisor.start_link(__MODULE__, update_delay)
+  def start_link(delays) do
+    Supervisor.start_link(__MODULE__, delays)
   end
 
   # Callbacks
 
-  def init(update_delay) do
+  def init(delays) do
     children = [
       supervisor(Monitex.AccountsFetcher, [:monitex_fetcher]),
-      worker(Monitex.AccountsUpdater, [update_delay, :monitex_fetcher]),
+      worker(Monitex.AccountsUpdater, [delays, :monitex_fetcher]),
     ]
     supervise(children, strategy: :one_for_all)
   end
