@@ -86,7 +86,7 @@ defmodule Twitter do
     {token, token_secret} = state.tokens
     {:ok, response} = :oauth.get(url, params, state.consumer, token, token_secret, [body_format: :binary])
     {{'HTTP/1.1', 200, 'OK'}, _headers, body} = response
-    reply = JSEX.decode(body)
+    reply = JSX.decode(body)
     {:reply, reply, state}
   end
 end

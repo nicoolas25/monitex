@@ -33,7 +33,7 @@ defmodule Monitex.Mixfile do
   defp deps(:prod) do
     [
       { :oauth, github: "tim/erlang-oauth", tag: "v1.5.0" },
-      { :jsex, version: "~>2.0.0" },
+      { :exjsx, version: "~>3.1.0" },
     ]
   end
 
